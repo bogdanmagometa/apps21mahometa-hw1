@@ -89,8 +89,8 @@ public class TemperatureSeriesAnalysis {
             if (curDiff < minDiff) {
                 closestVal = curVal;
                 minDiff = curDiff;
-            } else if (Math.abs(curVal - tempValue) == minDiff &&
-                    curVal > closestVal) {
+            } else if (Math.abs(curVal - tempValue) == minDiff
+                    && curVal > closestVal) {
                 closestVal = curVal;
             }
         }

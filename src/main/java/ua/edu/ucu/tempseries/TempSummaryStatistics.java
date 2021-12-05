@@ -8,7 +8,10 @@ public final class TempSummaryStatistics {
     private final double minTemp;
     private final double maxTemp;
 
-    public TempSummaryStatistics(double avgTemp, double devTemp, double minTemp, double maxTemp) {
+    public TempSummaryStatistics(double avgTemp,
+                                 double devTemp,
+                                 double minTemp,
+                                 double maxTemp) {
         this.avgTemp = avgTemp;
         this.devTemp = devTemp;
         this.minTemp = minTemp;
@@ -47,8 +50,10 @@ public final class TempSummaryStatistics {
             return false;
         }
         TempSummaryStatistics that = (TempSummaryStatistics) o;
-        return Double.compare(that.avgTemp, avgTemp) == 0 && Double.compare(that.devTemp, devTemp) == 0 &&
-                Double.compare(that.minTemp, minTemp) == 0 && Double.compare(that.maxTemp, maxTemp) == 0;
+        return Double.compare(that.avgTemp, avgTemp) == 0
+                && Double.compare(that.devTemp, devTemp) == 0
+                && Double.compare(that.minTemp, minTemp) == 0
+                && Double.compare(that.maxTemp, maxTemp) == 0;
     }
 
     @Override
