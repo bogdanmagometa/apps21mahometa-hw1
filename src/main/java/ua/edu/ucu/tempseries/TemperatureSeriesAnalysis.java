@@ -8,7 +8,7 @@ public class TemperatureSeriesAnalysis {
         boolean filter(double temp);
     }
 
-    private final static double MIN_TEMP = -273;
+    private static final double MIN_TEMP = -273;
     private double[] temperatureSeries;
     private int size;
 
@@ -19,7 +19,8 @@ public class TemperatureSeriesAnalysis {
 
     public TemperatureSeriesAnalysis(double[] temperatureSeries) {
         checkNewTemps(temperatureSeries);
-        this.temperatureSeries = Arrays.copyOf(temperatureSeries, temperatureSeries.length);
+        this.temperatureSeries = Arrays.copyOf(temperatureSeries,
+                temperatureSeries.length);
         size = temperatureSeries.length;
     }
 
@@ -32,7 +33,8 @@ public class TemperatureSeriesAnalysis {
     private void checkNewTemps(double... temps) {
         for (double temp: temps) {
             if (temp < MIN_TEMP) {
-                throw new InputMismatchException("Some value is below minimum " + MIN_TEMP);
+                throw new InputMismatchException(
+                        "Some value is below minimum " + MIN_TEMP);
             }
         }
     }
@@ -53,7 +55,7 @@ public class TemperatureSeriesAnalysis {
         double var = 0;
         for (int i = 0; i < size; i++) {
             double temp = temperatureSeries[i];
-            var += Math.pow(temp - avg, 2);
+            var += (temp - avg) * (temp - avg);
         }
         var /= temperatureSeries.length-1;
         return Math.sqrt(var);
@@ -87,7 +89,8 @@ public class TemperatureSeriesAnalysis {
             if (curDiff < minDiff) {
                 closestVal = curVal;
                 minDiff = curDiff;
-            } else if (Math.abs(curVal - tempValue) == minDiff && curVal > closestVal) {
+            } else if (Math.abs(curVal - tempValue) == minDiff &&
+                    curVal > closestVal) {
                 closestVal = curVal;
             }
         }
@@ -140,7 +143,11 @@ public class TemperatureSeriesAnalysis {
                 newLength = 2 * temperatureSeries.length;
             }
             double[] newTemperatureSeries = new double[newLength];
-            System.arraycopy(temperatureSeries, 0, newTemperatureSeries, 0, size);
+            System.arraycopy(temperatureSeries,
+                    0,
+                    newTemperatureSeries,
+                    0,
+                    size);
             newTemperatureSeries[size++] = temp;
             temperatureSeries = newTemperatureSeries;
         }
