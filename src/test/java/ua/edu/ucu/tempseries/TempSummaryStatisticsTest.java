@@ -37,7 +37,8 @@ public class TempSummaryStatisticsTest {
 
     @Test
     public void testToString() {
-        assertEquals("TempSummaryStatistics{avgTemp=1.0, devTemp=2.0, minTemp=3.0, maxTemp=4.0}", sum1.toString());
+        assertEquals("TempSummaryStatistics{avgTemp=1.0, devTemp=2.0, minTemp=3.0, maxTemp=4.0}",
+                sum1.toString());
     }
 
     @Test
@@ -47,6 +48,14 @@ public class TempSummaryStatisticsTest {
         assertFalse(sum1.equals(new TemperatureSeriesAnalysis()));
         assertFalse(sum1.equals(null));
         assertEquals(sum1, sum1);
+        assertNotEquals(new TempSummaryStatistics(1, 2, 3, 4),
+                new TempSummaryStatistics(-1, 2, 3, 4));
+        assertNotEquals(new TempSummaryStatistics(1, 2, 3, 4),
+                new TempSummaryStatistics(1, -2, 3, 4));
+        assertNotEquals(new TempSummaryStatistics(1, 2, 3, 4),
+                new TempSummaryStatistics(1, 2, -3, 4));
+        assertNotEquals(new TempSummaryStatistics(1, 2, 3, 4),
+                new TempSummaryStatistics(1, 2, 3, -4));
     }
 
     @Test

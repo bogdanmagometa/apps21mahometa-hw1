@@ -149,7 +149,9 @@ public class TemperatureSeriesAnalysisTest {
         seriesAnalysis.addTemps(20_000);
         assertArrayEquals(new double[]{20_000}, seriesAnalysis.findTempsGreaterThan(21), 0.001);
         seriesAnalysis.addTemps(-3);
-        assertArrayEquals(new double[]{-1, 2, 0, 20_000}, seriesAnalysis.findTempsGreaterThan(-2), 0.001);
+        assertArrayEquals(new double[]{-1, 2, 0, 20_000},
+                seriesAnalysis.findTempsGreaterThan(-2),
+                0.001);
 
         seriesAnalysis = new TemperatureSeriesAnalysis();
         seriesAnalysis.findTempsGreaterThan(1);

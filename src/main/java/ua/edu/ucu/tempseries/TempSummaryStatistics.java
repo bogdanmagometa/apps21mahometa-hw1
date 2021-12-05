@@ -30,12 +30,12 @@ public final class TempSummaryStatistics {
 
     @Override
     public String toString() {
-        return "TempSummaryStatistics{" +
-                "avgTemp=" + avgTemp +
-                ", devTemp=" + devTemp +
-                ", minTemp=" + minTemp +
-                ", maxTemp=" + maxTemp +
-                '}';
+        return "TempSummaryStatistics{"
+                + "avgTemp=" + avgTemp
+                + ", devTemp=" + devTemp
+                + ", minTemp=" + minTemp
+                + ", maxTemp=" + maxTemp
+                + '}';
     }
 
     @Override
@@ -47,7 +47,8 @@ public final class TempSummaryStatistics {
             return false;
         }
         TempSummaryStatistics that = (TempSummaryStatistics) o;
-        return Double.compare(that.avgTemp, avgTemp) == 0 && Double.compare(that.devTemp, devTemp) == 0 && Double.compare(that.minTemp, minTemp) == 0 && Double.compare(that.maxTemp, maxTemp) == 0;
+        return Double.compare(that.avgTemp, avgTemp) == 0 && Double.compare(that.devTemp, devTemp) == 0 &&
+                Double.compare(that.minTemp, minTemp) == 0 && Double.compare(that.maxTemp, maxTemp) == 0;
     }
 
     @Override
