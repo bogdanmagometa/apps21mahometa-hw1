@@ -170,10 +170,22 @@ public class TemperatureSeriesAnalysisTest {
     }
 
     @Test(expected = InputMismatchException.class)
-    public void testAddTemps() {
+    public void testAddTempsException() {
         double[] temperatureSeries = {1, 2, 3, 4, 5};
         TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
 
         seriesAnalysis.addTemps(-10000);
+    }
+
+    @Test
+    public void testAddTemps() {
+        TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis();
+
+        assertEquals(1, seriesAnalysis.addTemps(0));
+        assertEquals(2, seriesAnalysis.addTemps(1));
+
+        seriesAnalysis = new TemperatureSeriesAnalysis(new double[] {1, 2});
+        assertEquals(3, seriesAnalysis.addTemps(0));
+        assertEquals(4, seriesAnalysis.addTemps(1));
     }
 }

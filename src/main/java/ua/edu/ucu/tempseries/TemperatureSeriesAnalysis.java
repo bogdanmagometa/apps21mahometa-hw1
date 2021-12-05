@@ -24,8 +24,9 @@ public class TemperatureSeriesAnalysis {
     }
 
     private void checkTemperatureSeries() {
-        if (size == 0)
+        if (size == 0) {
             throw new IllegalArgumentException("Temperature series is empty");
+        }
     }
 
     private void checkNewTemps(double... temps) {
@@ -98,8 +99,9 @@ public class TemperatureSeriesAnalysis {
         int numFilteredTemps = 0;
         for (int i = 0; i < size; i++) {
             double temp = temperatureSeries[i];
-            if (tempFilter.filter(temp))
+            if (tempFilter.filter(temp)) {
                 numFilteredTemps++;
+            }
         }
         double[] filteredTemps = new double[numFilteredTemps];
         int filteredTempIdx = 0;
@@ -131,7 +133,12 @@ public class TemperatureSeriesAnalysis {
         if (size < temperatureSeries.length) {
             temperatureSeries[size++] = temp;
         } else {
-            int newLength = temperatureSeries.length * 2 + (temperatureSeries.length == 0 ? 1: 0);
+            int newLength;
+            if (temperatureSeries.length == 0) {
+                newLength = 1;
+            } else {
+                newLength = 2 * temperatureSeries.length;
+            }
             double[] newTemperatureSeries = new double[newLength];
             System.arraycopy(temperatureSeries, 0, newTemperatureSeries, 0, size);
             newTemperatureSeries[size++] = temp;
