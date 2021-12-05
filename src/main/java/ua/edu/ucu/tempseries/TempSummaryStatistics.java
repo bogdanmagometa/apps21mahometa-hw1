@@ -2,11 +2,11 @@ package ua.edu.ucu.tempseries;
 
 import java.util.Objects;
 
-final public class TempSummaryStatistics {
-    final private double avgTemp;
-    final private double devTemp;
-    final private double minTemp;
-    final private double maxTemp;
+public final class TempSummaryStatistics {
+    private final double avgTemp;
+    private final double devTemp;
+    private final double minTemp;
+    private final double maxTemp;
 
     public TempSummaryStatistics(double avgTemp, double devTemp, double minTemp, double maxTemp) {
         this.avgTemp = avgTemp;
@@ -40,8 +40,12 @@ final public class TempSummaryStatistics {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         TempSummaryStatistics that = (TempSummaryStatistics) o;
         return Double.compare(that.avgTemp, avgTemp) == 0 && Double.compare(that.devTemp, devTemp) == 0 && Double.compare(that.minTemp, minTemp) == 0 && Double.compare(that.maxTemp, maxTemp) == 0;
     }

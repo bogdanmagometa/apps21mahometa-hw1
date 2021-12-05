@@ -44,6 +44,9 @@ public class TempSummaryStatisticsTest {
     public void testEquals() {
         assertNotEquals(sum1, sum2);
         assertEquals(sum2, sum3);
+        assertFalse(sum1.equals(new TemperatureSeriesAnalysis()));
+        assertFalse(sum1.equals(null));
+        assertEquals(sum1, sum1);
     }
 
     @Test
